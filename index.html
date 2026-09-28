@@ -1,0 +1,712 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ahmed Nabil — senior mobile engineer. Flutter, Android and Kotlin Multiplatform. Offline-first apps, legacy migrations, performance work. Available for contract work.">
+<meta property="og:title" content="Ahmed Nabil — Mobile Engineering">
+<meta property="og:description" content="Senior mobile engineer. Flutter, Android, Kotlin Multiplatform. Apps live on Google Play and the App Store.">
+<meta property="og:type" content="website">
+<style>
+  :root { color-scheme: light; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>Ahmed Nabil — Mobile Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+
+<style>
+  :root {
+    color-scheme: light;
+    --paper: #EDEEE9;
+    --surface: #FFFFFF;
+    --ink: #15191A;
+    --ink-2: #3D4548;
+    --muted: #6B7477;
+    --rule: #D3D6CF;
+    --rule-soft: #E2E4DE;
+    --accent: #1F6353;
+    --accent-soft: #DCE8E3;
+    --shadow: 0 1px 2px rgba(21,25,26,.05), 0 8px 24px -12px rgba(21,25,26,.18);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --paper: #0F1213;
+      --surface: #171B1C;
+      --ink: #EAEDEA;
+      --ink-2: #BFC6C4;
+      --muted: #8A9391;
+      --rule: #2A3132;
+      --rule-soft: #212728;
+      --accent: #63B79C;
+      --accent-soft: #1A2B27;
+      --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --paper: #0F1213;
+    --surface: #171B1C;
+    --ink: #EAEDEA;
+    --ink-2: #BFC6C4;
+    --muted: #8A9391;
+    --rule: #2A3132;
+    --rule-soft: #212728;
+    --accent: #63B79C;
+    --accent-soft: #1A2B27;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px -12px rgba(0,0,0,.6);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Source Serif 4", Georgia, serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    padding-inline: 24px;
+    padding-block: 56px 72px;
+  }
+
+  h1, h2, h3, .display {
+    font-family: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .mono, .label, .spec dt, .chip, .metric-v, .nav a {
+    font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  .label {
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ---------- masthead ---------- */
+  header.masthead { border-bottom: 1px solid var(--rule); padding-bottom: 34px; }
+
+  .eyebrow {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 18px; flex-wrap: wrap;
+  }
+  .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent); flex: none;
+  }
+
+  h1 {
+    font-size: clamp(38px, 7.2vw, 62px);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -.028em;
+  }
+  .role {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 600;
+    font-size: clamp(17px, 2.8vw, 21px);
+    color: var(--accent);
+    margin-top: 10px;
+    letter-spacing: -.01em;
+  }
+  .lede {
+    margin-top: 22px;
+    font-size: 18px;
+    line-height: 1.62;
+    color: var(--ink-2);
+    max-width: 62ch;
+  }
+  .lede strong { color: var(--ink); font-weight: 600; }
+
+  .nav {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-top: 26px;
+  }
+  .nav a {
+    font-size: 12.5px;
+    text-decoration: none;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    background: var(--surface);
+    border-radius: 999px;
+    padding: 7px 14px;
+    transition: border-color .15s, color .15s;
+  }
+  .nav a:hover { border-color: var(--accent); color: var(--accent); }
+  .nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- stat band ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule-soft);
+    border: 1px solid var(--rule-soft);
+    margin-top: 40px;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .stat { background: var(--paper); padding: 16px 16px 14px; }
+  .metric-v {
+    font-size: 21px; font-weight: 500;
+    color: var(--ink); letter-spacing: -.02em;
+    font-variant-numeric: tabular-nums;
+    display: block; margin-bottom: 3px;
+  }
+  .stat .label { font-size: 10.5px; }
+
+  /* ---------- sections ---------- */
+  section { margin-top: 62px; }
+  .sec-head {
+    display: flex; align-items: baseline; gap: 14px;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 10px; margin-bottom: 30px;
+  }
+  h2 {
+    font-size: 15px; font-weight: 800;
+    letter-spacing: .06em; text-transform: uppercase;
+  }
+  .sec-head .count { font-size: 11px; color: var(--muted); }
+
+  /* ---------- projects ---------- */
+  .project {
+    background: var(--surface);
+    border: 1px solid var(--rule-soft);
+    border-radius: 4px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+  .p-top {
+    display: flex; justify-content: space-between;
+    align-items: baseline; gap: 14px; flex-wrap: wrap;
+  }
+  h3 {
+    font-size: 21px; font-weight: 700; letter-spacing: -.018em;
+  }
+  .chip {
+    font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 4px 9px; border-radius: 3px; white-space: nowrap;
+  }
+  .p-body { margin-top: 12px; color: var(--ink-2); max-width: 66ch; }
+  .p-body p { margin: 0 0 10px; }
+  .p-body p:last-child { margin-bottom: 0; }
+
+  .spec {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 7px 18px;
+    margin: 18px 0 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule-soft);
+    font-size: 13px;
+  }
+  .spec dt {
+    font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--muted); padding-top: 3px;
+  }
+  .spec dd {
+    margin: 0; color: var(--ink-2);
+    font-family: "IBM Plex Mono", monospace; font-size: 12.5px;
+    line-height: 1.55; word-break: break-word;
+  }
+
+  .links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+  .links a {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px; color: var(--accent);
+    text-decoration: none; border-bottom: 1px solid var(--accent-soft);
+    padding-bottom: 1px;
+  }
+  .links a:hover { border-bottom-color: var(--accent); }
+  .links a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* ---------- capability grid ---------- */
+  .caps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px 32px; }
+  .cap h4 {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-size: 15px; font-weight: 700; margin: 0 0 6px;
+  }
+  .cap p {
+    margin: 0; font-size: 14.5px; color: var(--ink-2);
+    font-family: "IBM Plex Mono", monospace; line-height: 1.6;
+  }
+
+  /* ---------- timeline ---------- */
+  .role-row {
+    display: grid;
+    grid-template-columns: 148px 1fr;
+    gap: 6px 22px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .role-row:last-child { border-bottom: none; }
+  .r-when {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px; color: var(--muted);
+    font-variant-numeric: tabular-nums; padding-top: 3px;
+  }
+  .r-what strong {
+    font-family: "Bricolage Grotesque", sans-serif;
+    font-weight: 700; font-size: 16px; display: block;
+  }
+  .r-what span { font-size: 14.5px; color: var(--ink-2); }
+
+  /* ---------- contact ---------- */
+  .contact {
+    background: var(--surface);
+    border: 1px solid var(--rule-soft);
+    border-radius: 4px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+  }
+  .contact p { margin: 0 0 18px; color: var(--ink-2); max-width: 58ch; }
+  .rows { display: grid; gap: 12px; }
+  .row {
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    padding-top: 12px; border-top: 1px solid var(--rule-soft);
+  }
+  .row:first-child { padding-top: 0; border-top: none; }
+  .row .label { min-width: 74px; }
+  .val {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13.5px; color: var(--ink);
+    user-select: all; word-break: break-all;
+  }
+  .val a { color: var(--accent); text-decoration: none; }
+  .val a:hover { text-decoration: underline; }
+  button.copy {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px; letter-spacing: .05em;
+    color: var(--muted); background: transparent;
+    border: 1px solid var(--rule); border-radius: 3px;
+    padding: 3px 9px; cursor: pointer;
+    transition: color .15s, border-color .15s;
+  }
+  button.copy:hover { color: var(--accent); border-color: var(--accent); }
+  button.copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  footer {
+    margin-top: 56px; padding-top: 22px;
+    border-top: 1px solid var(--rule);
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px; color: var(--muted);
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+
+  @media (max-width: 680px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .caps { grid-template-columns: 1fr; }
+    .role-row { grid-template-columns: 1fr; }
+    .spec { grid-template-columns: 1fr; gap: 3px 0; }
+    .spec dt { padding-top: 9px; }
+    .wrap { padding-block: 40px 56px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">
+      <span class="dot"></span>
+      <span class="label">Available for contract work · New Cairo, Egypt (UTC+3)</span>
+    </div>
+
+    <h1>Ahmed Nabil</h1>
+    <div class="role">Senior Mobile Engineer — Flutter, Android, Kotlin Multiplatform</div>
+
+    <p class="lede">
+      Six years building mobile apps that ship. I work mostly on the hard middle of
+      mobile products: <strong>offline-first data layers</strong>, <strong>legacy
+      migrations</strong>, and making apps fast on the cheap Android hardware real
+      users actually carry. Apps I've built are live on Google Play and the App Store,
+      used by <strong>100,000+ people</strong>.
+    </p>
+
+    <nav class="nav">
+      <a href="#work">Selected work</a>
+      <a href="#capabilities">What I do</a>
+      <a href="#background">Background</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="stats">
+      <div class="stat">
+        <span class="metric-v">6+</span>
+        <span class="label">Years shipping</span>
+      </div>
+      <div class="stat">
+        <span class="metric-v">100k+</span>
+        <span class="label">Active users served</span>
+      </div>
+      <div class="stat">
+        <span class="metric-v">9</span>
+        <span class="label">Apps in production</span>
+      </div>
+      <div class="stat">
+        <span class="metric-v">500+</span>
+        <span class="label">Developers trained</span>
+      </div>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="sec-head">
+      <h2>Selected work</h2>
+      <span class="count">Live on Google Play &amp; the App Store</span>
+    </div>
+
+    <article class="project">
+      <div class="p-top">
+        <h3>Kazyon Plus</h3>
+        <span class="chip">Android + iOS · Lead</span>
+      </div>
+      <div class="p-body">
+        <p>
+          The shopping and loyalty app for Egypt's largest discount grocery chain,
+          with over 100,000 active users. I own the Android build and lead the team
+          of three engineers behind it.
+        </p>
+        <p>
+          The main piece of work has been moving the app onto Kotlin Multiplatform.
+          Around 90% of the code is now a shared module used by both Android and iOS,
+          which means a feature gets written once instead of twice — and the two
+          platforms stop drifting apart.
+        </p>
+      </div>
+      <dl class="spec">
+        <dt>Stack</dt>
+        <dd>Kotlin · Kotlin Multiplatform · Ktor · SQLDelight · Jetpack Compose · Firebase</dd>
+        <dt>Scale</dt>
+        <dd>100,000+ active users · ~90% shared code across platforms</dd>
+        <dt>Role</dt>
+        <dd>Technical lead — architecture, code review, release ownership</dd>
+      </dl>
+      <div class="links">
+        <a href="https://play.google.com/store/apps/details?id=com.kazyon.customer&hl=en" target="_blank" rel="noopener">Google Play →</a>
+        <a href="https://apps.apple.com/eg/app/kazyon-plus/id1584830119" target="_blank" rel="noopener">App Store →</a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="p-top">
+        <h3>Hesabate</h3>
+        <span class="chip">Offline-first · Migration</span>
+      </div>
+      <div class="p-body">
+        <p>
+          An accounting and field-sales app for sales delegates who spend their day
+          out of signal range. I led its migration from native Android to Flutter and
+          shipped it to both stores.
+        </p>
+        <p>
+          The real work was the data layer. The app carries a 64-table local database
+          — 11 document types, multi-store inventory, tiered price lists, serial and
+          warranty tracking. I rebuilt it on sqflite and hand-wrote the migration path
+          across eight schema versions so that no existing user lost data on upgrade.
+        </p>
+        <p>
+          Then made it fast on cheap hardware: WAL journaling, bulk inserts chunked so
+          the UI thread keeps breathing, and catalogue parsing moved off the main
+          isolate. It also drives thermal printers and barcode scanners, and runs in
+          Arabic and English.
+        </p>
+      </div>
+      <dl class="spec">
+        <dt>Stack</dt>
+        <dd>Flutter · Dart · sqflite · Hive · BLoC / Cubit · GetX · Clean Architecture</dd>
+        <dt>Data</dt>
+        <dd>64 tables · ~949 columns · 22 indexes · schema v21 → v28, zero data loss</dd>
+        <dt>Hardware</dt>
+        <dd>Portable thermal printers · barcode scanners · full RTL (AR/EN)</dd>
+      </dl>
+      <div class="links">
+        <a href="https://play.google.com/store/apps/details?id=com.mms.hesabate_app&hl=en" target="_blank" rel="noopener">Google Play →</a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="p-top">
+        <h3>BI SmartLink</h3>
+        <span class="chip">Xamarin → Flutter</span>
+      </div>
+      <div class="p-body">
+        <p>
+          A monitoring product for a US client, stuck on Xamarin. I converted it to
+          Flutter end to end, retiring the legacy stack and putting Android and iOS on
+          one codebase.
+        </p>
+        <p>
+          I also built the test suite from scratch — it had none — reaching over 70%
+          coverage in unit and widget tests, which cut the defects QA found after each
+          release.
+        </p>
+      </div>
+      <dl class="spec">
+        <dt>Stack</dt>
+        <dd>Flutter · Dart · unit &amp; widget testing</dd>
+        <dt>Outcome</dt>
+        <dd>Two codebases → one · 70%+ test coverage from zero</dd>
+      </dl>
+      <div class="links">
+        <a href="https://play.google.com/store/apps/details?id=com.biinc.mobile.client&hl=en" target="_blank" rel="noopener">Google Play →</a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="p-top">
+        <h3>Mawardi</h3>
+        <span class="chip">Enterprise HR</span>
+      </div>
+      <div class="p-body">
+        <p>
+          An employee self-service app for ALMAWARID: payslips, leave and loan
+          balances, medical insurance details, official introduction letters, and a
+          ticketing flow for raising requests with HR. Built so staff stop queuing at
+          an HR desk for things a phone can answer.
+        </p>
+      </div>
+      <dl class="spec">
+        <dt>Stack</dt>
+        <dd>Flutter · Dart · REST APIs · Arabic / English</dd>
+      </dl>
+      <div class="links">
+        <a href="https://play.google.com/store/apps/details?id=com.asgatech.labors&hl=en" target="_blank" rel="noopener">Google Play →</a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="p-top">
+        <h3>Kazyon Asset Tracker</h3>
+        <span class="chip">Operations</span>
+      </div>
+      <div class="p-body">
+        <p>
+          A Flutter app that gives operations teams live visibility of equipment
+          across every branch — what's where, what moved, what's missing.
+        </p>
+      </div>
+      <dl class="spec">
+        <dt>Stack</dt>
+        <dd>Flutter · Dart · real-time sync</dd>
+      </dl>
+      <div class="links">
+        <a href="https://play.google.com/store/apps/details?id=com.Kazyon.Tracker&hl=en" target="_blank" rel="noopener">Google Play →</a>
+      </div>
+    </article>
+
+    <article class="project">
+      <div class="p-top">
+        <h3>Atlas &amp; Dukan Store</h3>
+        <span class="chip">Also built</span>
+      </div>
+      <div class="p-body">
+        <p>
+          <strong>Atlas</strong> — an interactive Saudi historical atlas presenting
+          battles through maps and narrated audio.
+        </p>
+        <p>
+          <strong>Dukan Store</strong> — a native Android app for partner grocery
+          stores handling stock, orders, and reporting.
+        </p>
+      </div>
+      <dl class="spec">
+        <dt>Stack</dt>
+        <dd>Flutter · native Android (Kotlin) · offline content · audio playback</dd>
+      </dl>
+    </article>
+  </section>
+
+  <section id="capabilities">
+    <div class="sec-head">
+      <h2>What I do</h2>
+    </div>
+    <div class="caps">
+      <div class="cap">
+        <h4>Cross-platform apps</h4>
+        <p>Flutter and Kotlin Multiplatform — one codebase, both stores, without the app feeling generic on either.</p>
+      </div>
+      <div class="cap">
+        <h4>Native Android</h4>
+        <p>Kotlin, Jetpack Compose, Coroutines and Flow, Room, Hilt, WorkManager.</p>
+      </div>
+      <div class="cap">
+        <h4>Offline-first architecture</h4>
+        <p>Local databases, sync ledgers, conflict handling — apps that keep working when the network doesn't.</p>
+      </div>
+      <div class="cap">
+        <h4>Legacy migrations</h4>
+        <p>Xamarin → Flutter, native → Flutter, monolith → KMP. Including the schema migrations nobody wants to write.</p>
+      </div>
+      <div class="cap">
+        <h4>Performance work</h4>
+        <p>SQLite tuning, isolate offloading, startup time, crash reduction — measured on low-end devices, not flagships.</p>
+      </div>
+      <div class="cap">
+        <h4>Testing &amp; CI/CD</h4>
+        <p>Unit, widget, integration and screenshot tests. GitHub Actions, Bitrise, Fastlane, store releases.</p>
+      </div>
+      <div class="cap">
+        <h4>Arabic &amp; RTL</h4>
+        <p>Full right-to-left layouts and bilingual apps, done properly rather than mirrored and hoped for.</p>
+      </div>
+      <div class="cap">
+        <h4>Hardware integrations</h4>
+        <p>Barcode scanners, thermal printers, and the device quirks that come with retail and field deployments.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="background">
+    <div class="sec-head">
+      <h2>Background</h2>
+    </div>
+
+    <div class="role-row">
+      <div class="r-when">Jun 2024 — now</div>
+      <div class="r-what">
+        <strong>Senior Mobile Developer · Kazyon Plus</strong>
+        <span>Lead the Android app and a team of three; driving the Kotlin Multiplatform migration.</span>
+      </div>
+    </div>
+
+    <div class="role-row">
+      <div class="r-when">Aug 2025 — now</div>
+      <div class="r-what">
+        <strong>Senior Flutter Developer · MMS Software Solutions</strong>
+        <span>Part-time. Led the Hesabate migration from native Android to Flutter, shipped to both stores.</span>
+      </div>
+    </div>
+
+    <div class="role-row">
+      <div class="r-when">Oct 2023 — Jun 2024</div>
+      <div class="r-what">
+        <strong>Senior Flutter Developer · BI (USA)</strong>
+        <span>Remote. Converted SmartLink from Xamarin to Flutter and built its test suite.</span>
+      </div>
+    </div>
+
+    <div class="role-row">
+      <div class="r-when">Oct 2022 — Oct 2023</div>
+      <div class="r-what">
+        <strong>Mobile Developer · AsgaTech</strong>
+        <span>Shipped three Flutter apps to Google Play across HR, cultural and enterprise domains.</span>
+      </div>
+    </div>
+
+    <div class="role-row">
+      <div class="r-when">Oct 2021 — Oct 2022</div>
+      <div class="r-what">
+        <strong>Android Developer · Zulily (USA)</strong>
+        <span>Remote. Quality and stability on a high-traffic e-commerce app; restored 50+ screenshot tests.</span>
+      </div>
+    </div>
+
+    <div class="role-row">
+      <div class="r-when">Sep 2018 — now</div>
+      <div class="r-what">
+        <strong>Instructor · Route Academy</strong>
+        <span>Part-time. Android and Flutter training; 500+ students and working developers taught.</span>
+      </div>
+    </div>
+
+    <div class="role-row">
+      <div class="r-when">2021</div>
+      <div class="r-what">
+        <strong>B.Sc. Computer Science · Cairo University</strong>
+        <span>Faculty of Science.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head">
+      <h2>Work with me</h2>
+    </div>
+    <div class="contact">
+      <p>
+        Open to contract and freelance work — new apps, migrations off a stack you've
+        outgrown, or rescuing one that's slow or unstable. Tell me the problem and
+        I'll tell you honestly whether I'm the right person for it.
+      </p>
+      <div class="rows">
+        <div class="row">
+          <span class="label">Email</span>
+          <span class="val" id="mail">ahmednabil.m.abdelaziz@gmail.com</span>
+          <button class="copy" data-target="mail">Copy</button>
+        </div>
+        <div class="row">
+          <span class="label">LinkedIn</span>
+          <span class="val"><a href="https://www.linkedin.com/in/ahmed-nabil-0b2bb3218/" target="_blank" rel="noopener">linkedin.com/in/ahmed-nabil-0b2bb3218</a></span>
+        </div>
+        <div class="row">
+          <span class="label">GitHub</span>
+          <span class="val"><a href="https://github.com/AhmedNabil232" target="_blank" rel="noopener">github.com/AhmedNabil232</a></span>
+        </div>
+        <div class="row">
+          <span class="label">Based in</span>
+          <span class="val">New Cairo, Egypt — UTC+3 · works with US &amp; EU hours</span>
+        </div>
+        <div class="row">
+          <span class="label">Languages</span>
+          <span class="val">Arabic (native) · English (professional)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Ahmed Nabil — Mobile Engineering</span>
+    <span>Flutter · Android · Kotlin Multiplatform</span>
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll('button.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.dataset.target);
+      var text = el.textContent.trim();
+      var done = function () {
+        var old = btn.textContent;
+        btn.textContent = 'Copied';
+        setTimeout(function () { btn.textContent = old; }, 1600);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { select(el); });
+      } else {
+        select(el);
+      }
+    });
+  });
+  function select(el) {
+    var r = document.createRange();
+    r.selectNodeContents(el);
+    var s = window.getSelection();
+    s.removeAllRanges();
+    s.addRange(r);
+  }
+</script>
+
+</body>
+</html>
